@@ -1,1 +1,8 @@
-{}
+{
+  "card_balance": "Баланс Карты",
+  "daily_points": "Ежедневные Очки",
+  "payment_status_disable": "Нет Оплаты",
+  "payment_status_disable_subtitle": "Вы Внесли Ваш",
+  "balance": "остаток",
+  "latest_transaction": "Последние транзакции"
+}

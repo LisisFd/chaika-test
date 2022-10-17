@@ -49,6 +49,66 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `Card Balance`
+  String get card_balance {
+    return Intl.message(
+      'Card Balance',
+      name: 'card_balance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Daily Points`
+  String get daily_points {
+    return Intl.message(
+      'Daily Points',
+      name: 'daily_points',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Payment Due`
+  String get payment_status_disable {
+    return Intl.message(
+      'No Payment Due',
+      name: 'payment_status_disable',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You've paid your`
+  String get payment_status_disable_subtitle {
+    return Intl.message(
+      'You`ve paid your',
+      name: 'payment_status_disable_subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `balance`
+  String get balance {
+    return Intl.message(
+      'balance',
+      name: 'balance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Latest Transactions`
+  String get latest_transaction {
+    return Intl.message(
+      'Latest Transactions',
+      name: 'latest_transaction',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

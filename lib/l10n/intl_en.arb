@@ -1,1 +1,8 @@
-{}
+{
+  "card_balance" : "Card Balance",
+  "daily_points": "Daily Points",
+  "payment_status_disable": "No Payment Due",
+  "payment_status_disable_subtitle": "You`ve paid your",
+  "balance": "balance",
+  "latest_transaction": "Latest Transactions"
+}

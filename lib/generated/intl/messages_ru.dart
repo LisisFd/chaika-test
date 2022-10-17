@@ -21,5 +21,15 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ru';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{};
+  static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "balance": MessageLookupByLibrary.simpleMessage("остаток"),
+        "card_balance": MessageLookupByLibrary.simpleMessage("Баланс Карты"),
+        "daily_points": MessageLookupByLibrary.simpleMessage("Ежедневные Очки"),
+        "latest_transaction":
+            MessageLookupByLibrary.simpleMessage("Последние транзакции"),
+        "payment_status_disable":
+            MessageLookupByLibrary.simpleMessage("Нет Оплаты"),
+        "payment_status_disable_subtitle":
+            MessageLookupByLibrary.simpleMessage("Вы Внесли Ваш")
+      };
 }
