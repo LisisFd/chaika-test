@@ -40,7 +40,7 @@ class _ListItemWidget extends StatelessWidget {
     return Stack(
       children: [
         Container(
-            padding: EdgeInsets.only(top: 0.w, right: 10.w, bottom: 10.w),
+            padding: EdgeInsets.only(top: 10.h, right: 10.w, bottom: 10.w),
             decoration: BoxDecoration(
                 border: Border(
                     bottom: BorderSide(color: Colors.grey.withOpacity(0.2)))),
@@ -77,13 +77,10 @@ class _ListItemWidget extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 20.sp,
                                 )),
-                            Padding(
-                              padding: EdgeInsets.zero,
-                              child: Icon(
-                                Icons.navigate_next,
-                                color: Colors.grey,
-                                size: 40.w,
-                              ),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              color: Colors.grey.withOpacity(0.5),
+                              size: 24.w,
                             ),
                           ],
                         ),
