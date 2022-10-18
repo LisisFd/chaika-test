@@ -145,7 +145,7 @@ class _CheckIcon  extends StatelessWidget {
              right: -6.w,
              child: Icon(
                Icons.circle,
-               color: const Color.fromRGBO(242,242,247,1),
+               color: UiDecorationColors.defaultAppColor,
                size: 80.w,
              ),
            ),

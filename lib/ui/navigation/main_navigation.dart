@@ -1,3 +1,5 @@
+
+import 'package:chaika_test/ui/transaction_detail/transaction_detail_screen.dart';
 import 'package:chaika_test/ui/transactions_list/transactions_list_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +19,8 @@ class MainNavigation {
 
   Route<Object> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case MainNavigationRouteNames.transactionDetailScreen:
+       return MaterialPageRoute(builder: (context)=> const TransactionDetailScreen());
       default:
         const widget = Text("Navigation error");
         return MaterialPageRoute(builder: (context) => widget);
