@@ -19,9 +19,7 @@ class TransactionsListViewModel {
     int differenceDays;
     switch (season.seasonType) {
       case TemperateSeasonType.autumn:
-        differenceDays = DateTime(dateTimeNow.year, DateTime.september, 1)
-            .difference(dateTimeNow)
-            .inDays;
+        differenceDays =  _daysBetween(DateTime(dateTimeNow.year, DateTime.september, 1),dateTimeNow);
         break;
       case TemperateSeasonType.winter:
         differenceDays = DateTime(dateTimeNow.year, DateTime.december, 1)
@@ -34,17 +32,21 @@ class TransactionsListViewModel {
             .inDays;
         break;
       case TemperateSeasonType.summer:
-        differenceDays = DateTime(dateTimeNow.year, DateTime.june, 1)
-            .difference(dateTimeNow)
-            .inDays;
+        differenceDays = _daysBetween(DateTime(dateTimeNow.year, DateTime.june, 1),dateTimeNow);
         break;
     }
-    final double points = considerPoints(differenceDays);
+    final double points = _considerPoints(differenceDays);
     final String totalPoint = '${(points / 1000.0).round()}K';
     return totalPoint;
   }
 
-  double considerPoints(int days) {
+  int _daysBetween(DateTime from, DateTime to) {
+    from = DateTime(from.year, from.month, from.day);
+    to = DateTime(to.year, to.month, to.day);
+    return (to.difference(from).inHours / 24).round();
+  }
+
+  double _considerPoints(int days) {
     double prePrevious = 0;
     double previous = 0;
     for (int i = 0; i < days; i++) {
