@@ -13,62 +13,11 @@ class TransactionsListViewModel {
     return result;
   }
 
-  String calculatePoints() {
-    DateTime dateTimeNow = DateTime.now();
-    TemperateSeason season = TemperateSeason(numberOfMonth: dateTimeNow.month);
-    int differenceDays;
-    switch (season.seasonType) {
-      case TemperateSeasonType.autumn:
-        differenceDays =  _daysBetween(DateTime(dateTimeNow.year, DateTime.september, 1),dateTimeNow);
-        break;
-      case TemperateSeasonType.winter:
-        differenceDays = DateTime(dateTimeNow.year, DateTime.december, 1)
-            .difference(dateTimeNow)
-            .inDays;
-        break;
-      case TemperateSeasonType.spring:
-        differenceDays = DateTime(dateTimeNow.year, DateTime.march, 1)
-            .difference(dateTimeNow)
-            .inDays;
-        break;
-      case TemperateSeasonType.summer:
-        differenceDays = _daysBetween(DateTime(dateTimeNow.year, DateTime.june, 1),dateTimeNow);
-        break;
-    }
-    final double points = _considerPoints(differenceDays);
-    final String totalPoint = '${(points / 1000.0).round()}K';
-    return totalPoint;
-  }
-
-  int _daysBetween(DateTime from, DateTime to) {
-    from = DateTime(from.year, from.month, from.day);
-    to = DateTime(to.year, to.month, to.day);
-    return (to.difference(from).inHours / 24).round();
-  }
-
-  double _considerPoints(int days) {
-    double prePrevious = 0;
-    double previous = 0;
-    for (int i = 0; i < days; i++) {
-      if (i == 0) {
-        prePrevious = 2;
-      } else if (i == 1) {
-        previous = 3;
-      } else {
-        final result = prePrevious + previous * 0.6;
-
-        prePrevious = previous;
-        previous = result;
-      }
-    }
-    return previous;
-  }
-
   TransactionsListViewModel({
     required this.transactions,
     required double cardBalance,
   }) : _cardBalance = cardBalance {
-    dailyPoints = calculatePoints();
+    dailyPoints = PointsService.calculatePoints();
   }
 
   factory TransactionsListViewModel.fromAccountInfo(AccountInfo accountInfo) {

@@ -8,7 +8,7 @@ class TransactionRowModel {
   final String? nameSender;
   final double _amount;
   final double? _cashBack;
-  final DateTime _transactionTime;
+  final String _transactionTime;
   final bool _isPending;
 
   String get amount {
@@ -38,38 +38,14 @@ class TransactionRowModel {
 
   String get timeTransaction {
     String startResult = nameSender != null ? "$nameSender — " : "";
-    final int timeDifference = _calculateDifference(_transactionTime);
-    if (timeDifference <= 1 && timeDifference >= -1) {
-      switch (timeDifference) {
-        case -1:
-          return '${startResult}Yesterday';
-        case 0:
-          return '${startResult}Today';
-        case 1:
-          return '${startResult}Tomorrow';
-      }
-    } else if (timeDifference >= -6 && _isDayInWeek(_transactionTime)) {
-      return '$startResult${DateFormat('EEEE').format(_transactionTime)}';
-    }
-    return '$startResult${DateFormat("d/M/yy").format(_transactionTime)}';
-  }
-
-  bool _isDayInWeek(DateTime dateTime) {
-    if (DateTime.now().weekday - dateTime.weekday > 0) {
-      return true;
-    }
-    return false;
-  }
-
-  int _calculateDifference(DateTime date) {
-    return date.difference(DateTime.now()).inDays;
+    return '$startResult$_transactionTime';
   }
 
   factory TransactionRowModel.fromTransaction(Transaction transaction) {
     return TransactionRowModel(
         id: transaction.id,
         transactionType: transaction.transactionType,
-        transactionTime: transaction.transactionTime,
+        transactionTime: transaction.transactionTime.parseToString(),
         isPending: transaction.isPending,
         name: transaction.name ??
             transaction.transactionType.fromString().capitalize(),
@@ -82,12 +58,12 @@ class TransactionRowModel {
   TransactionRowModel({
     required this.id,
     required this.name,
-    required this.nameSender,
-    required amount,
-    required cashBack,
+    this.nameSender,
+    required double amount,
+    required double? cashBack,
     required TransactionType transactionType,
     required String overview,
-    required DateTime transactionTime,
+    required String transactionTime,
     required bool isPending,
   })  : _transactionType = transactionType,
         _overview = overview,

@@ -131,7 +131,6 @@ class _PaymentStatusWidget extends StatelessWidget {
   }
 }
 
-///TODO: Change to Two Containers
 class _CheckIcon extends StatelessWidget {
   const _CheckIcon({
     Key? key,
@@ -139,30 +138,19 @@ class _CheckIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 80.w,
-      height: 80.h,
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          Positioned(
-            right: -6.w,
-            child: Icon(
-              Icons.circle,
-              color: UiDecorationColors.defaultAppColor,
-              size: 80.w,
-            ),
-          ),
-          Positioned(
-            top: 80.w / 5,
-            right: 80.w / 7,
-            child: Icon(
-              Icons.check_rounded,
-              color: Colors.black,
-              size: 90.w / 2,
-            ),
-          )
-        ],
+    return ClipOval(
+      child: ColoredBox(
+        color: UiDecorationColors.defaultAppColor,
+        child: SizedBox(
+          width: 80.w,
+          height: 80.w,
+          child: Center(
+              child: Icon(
+            Icons.check_rounded,
+            color: Colors.black,
+            size: 50.w,
+          )),
+        ),
       ),
     );
   }
