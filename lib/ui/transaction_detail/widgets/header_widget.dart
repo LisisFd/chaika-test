@@ -5,16 +5,19 @@ class _HeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel =
+        context.read<TransactionDetailModel>().transactionDetailViewModel;
+
     return Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
       Text(
-        '\$7.50',
+        viewModel.amount,
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 60.sp),
       ),
       Text(
-        'Airalo',
+        viewModel.name,
         style: TextStyle(color: Colors.grey, fontSize: 19.sp),
       ),
-      Text('02/02/0200, 12:47',
+      Text(viewModel.transactionTime,
           style: TextStyle(color: Colors.grey, fontSize: 19.sp)),
     ]);
   }

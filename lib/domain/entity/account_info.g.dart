@@ -7,7 +7,7 @@ part of 'account_info.dart';
 // **************************************************************************
 
 AccountInfo _$AccountInfoFromJson(Map<String, dynamic> json) => AccountInfo(
-      balance: json['balance'] as int,
+      balance: (json['balance'] as num).toDouble(),
       transactions: (json['transactions'] as List<dynamic>)
           .map((e) => Transaction.fromJson(e as Map<String, dynamic>))
           .toList(),

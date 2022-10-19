@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final  mainNavigation =  MainNavigation();
+    final mainNavigation = MainNavigation();
     return ScreenUtilInit(
         designSize: const Size(390, 844),
         minTextAdapt: true,
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             supportedLocales: S.delegate.supportedLocales,
             routes: mainNavigation.routes,
             onGenerateRoute: mainNavigation.onGenerateRoute,
-            initialRoute: MainNavigationRouteNames.transactionDetailScreen,
+            initialRoute: MainNavigationRouteNames.transactionsListScreen,
           );
         });
   }

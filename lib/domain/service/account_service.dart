@@ -5,11 +5,7 @@ class AccountService {
   final Api _api = Api();
   late AccountInfo accountInfo;
 
-  AccountService() {
-    _loadInfo();
-  }
-
-  void _loadInfo() {
+  void loadInfo() {
     accountInfo = AccountInfo.fromJson(_api.getAccountInfo());
   }
 }

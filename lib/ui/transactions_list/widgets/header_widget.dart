@@ -37,6 +37,8 @@ class _CardBalanceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final title = S.of(context).card_balance;
+    final model = context.read<TransactionsListModel>();
+    final viewModel = model.transactionsListViewModel;
     return Container(
       width: double.infinity,
       decoration: UiDecoration.cardInfoDecoration,
@@ -50,10 +52,10 @@ class _CardBalanceWidget extends StatelessWidget {
               style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500),
             ),
             Text(
-              '\$17.30',
+              viewModel.cardBalance,
               style: TextStyle(fontSize: 30.sp, fontWeight: FontWeight.bold),
             ),
-            Text('\$1,482.70 Available',
+            Text(viewModel.available,
                 style: TextStyle(fontSize: 17.sp, color: Colors.grey)),
           ],
         ),
@@ -67,6 +69,9 @@ class _DailyPointsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final title = S.of(context).daily_points;
+    final model = context.read<TransactionsListModel>();
+    final viewModel = model.transactionsListViewModel;
     return Container(
       width: double.infinity,
       decoration: UiDecoration.cardInfoDecoration,
@@ -78,10 +83,10 @@ class _DailyPointsWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Daily ponts',
+              Text(title,
                   style:
                       TextStyle(fontSize: 17.sp, fontWeight: FontWeight.w500)),
-              Text('456K',
+              Text(viewModel.dailyPoints,
                   style: TextStyle(fontSize: 18.sp, color: Colors.grey)),
             ],
           ),
@@ -118,8 +123,7 @@ class _PaymentStatusWidget extends StatelessWidget {
             ),
             const Expanded(
                 child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: _CheckIcon()))
+                    alignment: Alignment.bottomRight, child: _CheckIcon()))
           ],
         ),
       ),
@@ -127,11 +131,11 @@ class _PaymentStatusWidget extends StatelessWidget {
   }
 }
 
-class _CheckIcon  extends StatelessWidget {
-
-  const _CheckIcon(
-      {Key? key, })
-      : super(key: key);
+///TODO: Change to Two Containers
+class _CheckIcon extends StatelessWidget {
+  const _CheckIcon({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -141,21 +145,21 @@ class _CheckIcon  extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-           Positioned(
-             right: -6.w,
-             child: Icon(
-               Icons.circle,
-               color: UiDecorationColors.defaultAppColor,
-               size: 80.w,
-             ),
-           ),
           Positioned(
-            top:  80.w/5,
-            right: 80.w/7,
+            right: -6.w,
+            child: Icon(
+              Icons.circle,
+              color: UiDecorationColors.defaultAppColor,
+              size: 80.w,
+            ),
+          ),
+          Positioned(
+            top: 80.w / 5,
+            right: 80.w / 7,
             child: Icon(
               Icons.check_rounded,
               color: Colors.black,
-              size: 90.w/2,
+              size: 90.w / 2,
             ),
           )
         ],

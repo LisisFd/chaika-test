@@ -3,10 +3,11 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'account_info.g.dart';
 
-
-@JsonSerializable(fieldRename: FieldRename.snake,)
+@JsonSerializable(
+  fieldRename: FieldRename.snake,
+)
 class AccountInfo {
-  final int balance;
+  final double balance;
   final List<Transaction> transactions;
   final DateTime registrationDate;
 
@@ -19,5 +20,3 @@ class AccountInfo {
 
   Map<String, dynamic> toJson() => _$AccountInfoToJson(this);
 }
-
-
